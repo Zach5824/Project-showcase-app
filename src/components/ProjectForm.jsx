@@ -12,13 +12,13 @@ const ProjectForm = ({ onAddProject }) => {
   };
 
   return (
-    <Paper variant="outlined" sx={{ p: 3, borderRadius: 2 }}>
+    <Paper sx={{ p: 4, borderRadius: 3 }}>
       <Typography variant="h6" fontWeight="bold" gutterBottom>Add Project</Typography>
       <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <TextField 
           label="Title" 
           fullWidth 
-          size="small" 
+          variant="filled"
           value={formData.title}
           onChange={(e) => setFormData({...formData, title: e.target.value})}
         />
@@ -27,10 +27,15 @@ const ProjectForm = ({ onAddProject }) => {
           fullWidth 
           multiline 
           rows={3} 
+          variant="filled"
           value={formData.description}
           onChange={(e) => setFormData({...formData, description: e.target.value})}
         />
-        <Button type="submit" variant="outlined" sx={{ width: 'fit-content', textTransform: 'none', color: 'black', borderColor: '#ccc' }}>
+        <Button 
+          type="submit" 
+          variant="contained" 
+          sx={{ width: 'fit-content', textTransform: 'none', px: 4 }}
+        >
           Add
         </Button>
       </Box>

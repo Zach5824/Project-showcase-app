@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { Container, Box, Divider, Typography, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Container, Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Header from './components/Header';
 import ProjectForm from './components/ProjectForm';
 import SearchBar from './components/SearchBar';
 import ProjectList from './components/ProjectList';
 
-const theme = createTheme({
+// Define the Modern Dark Theme
+const darkTheme = createTheme({
   palette: {
-    background: { default: '#f9f9f9' },
+    mode: 'dark',
+    primary: { main: '#3f8cff' },
+    background: { default: '#0A0A0B', paper: '#161618' },
   },
+  shape: { borderRadius: 12 },
 });
 
 const App = () => {
@@ -27,15 +31,19 @@ const App = () => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Header />
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" sx={{ pb: 5 }}>
         <Box sx={{ mt: 4, display: 'flex', flexDirection: 'column', gap: 3 }}>
           <ProjectForm onAddProject={addProject} />
-          <Box sx={{ p: 2, bgcolor: 'white', borderRadius: 2, border: '1px solid #e0e0e0' }}>
+          <Box sx={{ 
+            p: 3, 
+            bgcolor: 'background.paper', 
+            borderRadius: 3, 
+            border: '1px solid #262629' 
+          }}>
             <SearchBar onSearchChange={setSearchTerm} />
-            <Divider sx={{ my: 2 }} />
             <ProjectList projects={filteredProjects} />
           </Box>
         </Box>

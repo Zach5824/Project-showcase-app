@@ -1,15 +1,22 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = ({ onSearchChange }) => {
   return (
     <TextField 
       placeholder="Search Projects" 
       fullWidth 
-      size="small" 
       variant="outlined"
       onChange={(e) => onSearchChange(e.target.value)}
-      sx={{ '& .MuiOutlinedInput-root': { borderRadius: 1 } }}
+      sx={{ mb: 2 }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon color="action" />
+          </InputAdornment>
+        ),
+      }}
     />
   );
 };
