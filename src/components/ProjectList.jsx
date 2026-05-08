@@ -3,6 +3,9 @@ import { List, Typography, Box } from '@mui/material';
 import ProjectCard from './ProjectCard';
 
 const ProjectList = ({ projects }) => {
+  <List>
+    {projects.map(p => <ProjectCard key={p.id} project={p} />)}
+  </List>
   if (projects.length === 0) {
     return (
       <Box sx={{ textAlign: 'center', py: 4 }}>
